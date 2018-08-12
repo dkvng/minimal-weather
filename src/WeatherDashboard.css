@@ -1,0 +1,183 @@
+input {
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  width: 300px;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+  font-size: 1.15em;
+  border-radius: 4px;
+  box-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4);
+  padding: 12px;
+  color: #484848;
+  margin-right: 15px;
+}
+
+.Weather-section h2 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.Weather-section p {
+  font-weight: lighter;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.Weather-section h3 {
+  text-transform: capitalize;
+}
+
+strong {
+  font-weight: normal;
+}
+
+.Weather-submit {
+  border: 0px solid transparent;
+  background: #6bb9f0;
+  color: white;
+  box-shadow: none;
+}
+
+.Weather-submit:hover {
+  cursor: pointer;
+}
+
+.Weather-section figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@-webkit-keyframes sunny {
+  50% {
+    box-shadow: 0.0625rem 0.0625rem 0.25rem 0.125rem rgba(253, 216, 53, 0.75);
+  }
+}
+
+@keyframes sunny {
+  50% {
+    box-shadow: 0.0625rem 0.0625rem 0.25rem 0.125rem rgba(253, 216, 53, 0.75);
+  }
+}
+
+.animate-c {
+  display: block;
+  background: #F7CA18;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  box-shadow: 0.0625rem 0.0625rem 2.5rem 0.325rem rgba(251, 192, 45, 0.8);
+  -webkit-animation: sunny 1.3s ease infinite;
+  animation: sunny 1.3s ease infinite;
+}
+
+@keyframes cloudy {
+  60% {
+    background: #b0bec5;
+  }
+}
+
+.animate-hc, .animate-lc {
+  display: block;
+  background: #6C7A89;
+  width: 2.5rem;
+  height: 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  -webkit-animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+}
+.animate-hc:before, .animate-lc:before {
+  display: block;
+  content: "";
+  background: #6C7A89;
+  width: 1.75rem;
+  height: 1.75rem;
+  position: relative;
+  top: -0.5rem;
+  border-radius: 1.5rem;
+  -webkit-animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+}
+
+.animate-hc:after, .animate-lc:after {
+  display: block;
+  content: "";
+  background: #6C7A89;
+  width: 2.5rem;
+  height: 1.25rem;
+  position: relative;
+  top: -1.75rem;
+  left: -.75rem;
+  border-radius: 1.5rem;
+  -webkit-animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+}
+
+@-webkit-keyframes rainy {
+  60% {
+    top: -0.25rem;
+    opacity: 0;
+  }
+  61% {
+    top: -1.5rem;
+  }
+}
+
+@keyframes rainy {
+  60% {
+    top: -0.25rem;
+    opacity: 0;
+  }
+  61% {
+    top: -1.5rem;
+  }
+}
+
+.animate-hr,
+.animate-lr,
+.animate-s,
+.animate-t {
+  display: block;
+  background: #67809F;
+  width: 2.5rem;
+  height: 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+}
+.animate-hr:before,
+.animate-lr:before,
+.animate-s:before,
+.animate-t:before {
+  display: block;
+  content: "";
+  width: 1.75rem;
+  height: 1.75rem;
+  position: relative;
+  top: -0.5rem;
+  border-radius: 1.5rem;
+  background: #67809F;
+}
+
+.animate-hr:after,
+.animate-lr:after,
+.animate-s:after,
+.animate-t:after {
+  display: block;
+  content: "";
+  border: 4px dotted #67809F;
+  border-radius: 4px;
+  border-left: 0;
+  border-right: 0;
+  position: relative;
+  left: 0.625rem;
+  top: -1.5rem;
+  width: 1.25rem;
+  height: 0.3125rem;
+  transform: rotate(3deg);
+  -webkit-animation: rainy 1.4s linear infinite;
+  animation: rainy 1.4s linear infinite;
+}

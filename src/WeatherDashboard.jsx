@@ -28,6 +28,10 @@ class WeatherDashboard extends Component {
 
   handleSubmit(e) {
     let { location, date } = this.state;
+
+    if (location === "") {
+      location = "New York";
+    }
     e.preventDefault();
     fetch(
       `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${location}`
@@ -69,33 +73,49 @@ class WeatherDashboard extends Component {
   }
 
   render() {
-    let { error, weather } = this.state;
+    let { error, weather, location } = this.state;
+    if (location === "") {
+      location = "New York";
+    }
+    
     return (
-      <section>
+      <section className="Weather-section">
         <form onSubmit={this.handleSubmit}>
-          {error !== "" ? <p>{error}</p> : ""}
           <input
             type="text"
             value={this.state.location}
             onChange={this.update("location")}
             placeholder="Try New York or San Francisco"
           />
-          <input type="submit" value="Get Current Weather" />
+          <input
+            type="submit"
+            value="Get Current Weather"
+            className="Weather-submit"
+          />
+          {error !== "" ? <p>{error}</p> : ""}
         </form>
 
         {Object.values(weather).length > 0 ? (
           <figure>
-            <h3>Currently</h3>
+            <h3>Currently in {location}</h3>
+            <div className={"animate-" + weather.weather_state_abbr} />
+            <h2>
+              {this.convertToF(weather.the_temp)}&#176;{" "}
+              {weather.weather_state_name}
+            </h2>
             <p>
-              {this.convertToF(weather.the_temp)} {weather.weather_state_name}
+              <strong>High: </strong>
+              {this.convertToF(weather.max_temp)}&#176;
+              <strong> Low: </strong>
+              {this.convertToF(weather.min_temp)}&#176;
             </p>
             <p>
-              High: {this.convertToF(weather.max_temp)} Low:{" "}
-              {this.convertToF(weather.min_temp)}
+              <strong>Humidity: </strong>
+              {weather.humidity}%
             </p>
-            <p>Humidity: {weather.humidity}%</p>
             <p>
-              Wind Speed: {Math.round(weather.wind_speed)} mph{" "}
+              <strong>Wind Speed: </strong>
+              {Math.round(weather.wind_speed)} mph{" "}
               {weather.wind_direction_compass}
             </p>
           </figure>
