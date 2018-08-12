@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./WeatherDashboard.css";
 
 class WeatherDashboard extends Component {
   constructor(props) {
@@ -84,12 +85,18 @@ class WeatherDashboard extends Component {
 
         {Object.values(weather).length > 0 ? (
           <figure>
+            <h3>Currently</h3>
             <p>
               {this.convertToF(weather.the_temp)} {weather.weather_state_name}
             </p>
             <p>
               High: {this.convertToF(weather.max_temp)} Low:{" "}
               {this.convertToF(weather.min_temp)}
+            </p>
+            <p>Humidity: {weather.humidity}%</p>
+            <p>
+              Wind Speed: {Math.round(weather.wind_speed)} mph{" "}
+              {weather.wind_direction_compass}
             </p>
           </figure>
         ) : (
