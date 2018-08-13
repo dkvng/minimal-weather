@@ -63,7 +63,7 @@ class WeatherDashboard extends Component {
       .catch(err => {
         this.setState({
           weather: {},
-          error: err
+          error: err.message
         });
         return err;
       });
@@ -78,7 +78,6 @@ class WeatherDashboard extends Component {
     if (location === "") {
       location = "New York";
     }
-
     return (
       <section className="Weather-section">
         <form onSubmit={this.handleSubmit}>
