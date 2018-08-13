@@ -27,12 +27,15 @@ class WeatherDashboard extends Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     let { location, date } = this.state;
 
     if (location === "") {
       location = "New York";
     }
-    e.preventDefault();
+    this.setState({
+      weather: {}
+    });
     fetch(
       `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${location}`
     )
@@ -41,7 +44,7 @@ class WeatherDashboard extends Component {
       })
       .then(data => {
         if (data.length === 0) {
-          throw "Enter a valid major city name";
+          throw new Error("Enter a valid major city name");
         }
         let woeid = data[0].woeid;
         return fetch(
