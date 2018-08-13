@@ -31,7 +31,7 @@ class WeatherDashboard extends Component {
     let { location, date } = this.state;
 
     if (location === "") {
-      location = "New York";
+      location = "San Francisco";
     }
     this.setState({
       weather: {}
@@ -76,7 +76,7 @@ class WeatherDashboard extends Component {
   render() {
     let { error, weather, location } = this.state;
     if (location === "") {
-      location = "New York";
+      location = "San Francisco";
     }
     return (
       <section className="Weather-section">

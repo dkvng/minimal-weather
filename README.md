@@ -1,26 +1,27 @@
-## Available Scripts
+## Minimal Weather
+###### a clean, minimalistic weather app built with React
 
-In the project directory, you can run:
+Utilizing the [MetaWeather API](https://www.metaweather.com/api/), Minimal Weather is able to fetch the current weather of the location based on user input. Weather is depicted and animated utilizing css animations.
 
-### `npm start`
+#### How To Use
+Input a city into the text field (MetaWeather supports most major cities) and press enter or the submit button.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Weather will shortly be displayed. If a city that MetaWeather does not support is entered, an error will be displayed.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+*** If you submit without any input, the app will default to San Francisco.
 
-### `npm test`
+#### Why Two API Calls?
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
+Utilizing Fetch, on submit of the input field, 2 API calls are made to return the weather:
+1. The first, to query the Location Search endpoint with the location input string to obtain the woeid (Where On Earth ID) that MetaWeather requires when using their Location Day endpoint in step 2.
 
-### `npm run build`
+```javascript
+https://www.metaweather.com/api/location/search/?query=london
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+2. The second, to use the aforementioned woeid to now retrieve the current weather from MetaWeather for the location that the woeid corresponds to.
 
-See the section about [deployment](#deployment) for more information.
+```javascript
+https://www.metaweather.com/api/location/44418/2013/4/27/
+```
