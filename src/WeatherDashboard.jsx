@@ -52,14 +52,12 @@ class WeatherDashboard extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data[0]);
         this.setState({
           weather: data[0],
           error: ""
         });
       })
       .catch(err => {
-        console.log(err);
         this.setState({
           weather: {},
           error: err
@@ -77,7 +75,7 @@ class WeatherDashboard extends Component {
     if (location === "") {
       location = "New York";
     }
-    
+
     return (
       <section className="Weather-section">
         <form onSubmit={this.handleSubmit}>
