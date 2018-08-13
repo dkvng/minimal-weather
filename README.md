@@ -1,4 +1,4 @@
-## Minimal Weather
+## Minimal Weather by Dan
 ###### a clean, minimalistic weather app built with React
 
 Utilizing the [MetaWeather API](https://www.metaweather.com/api/), Minimal Weather is able to fetch the current weather of the location based on user input. Weather is depicted and animated utilizing css animations.
