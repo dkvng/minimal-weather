@@ -12,6 +12,9 @@ input {
   padding: 12px;
   color: #484848;
   margin-right: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .Weather-section h2 {
@@ -49,6 +52,7 @@ strong {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 70vh;
 }
 
 @-webkit-keyframes sunny {
@@ -65,7 +69,7 @@ strong {
 
 .animate-c {
   display: block;
-  background: #F7CA18;
+  background: #f7ca18;
   width: 2rem;
   height: 2rem;
   border-radius: 100%;
@@ -80,41 +84,44 @@ strong {
   }
 }
 
-.animate-hc, .animate-lc {
+.animate-hc,
+.animate-lc {
   display: block;
-  background: #6C7A89;
+  background: #6c7a89;
   width: 2.5rem;
   height: 1.25rem;
   border-radius: 0.75rem;
   margin-top: 1rem;
-  -webkit-animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
-  animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  -webkit-animation: cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  animation: cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
 }
-.animate-hc:before, .animate-lc:before {
+.animate-hc:before,
+.animate-lc:before {
   display: block;
   content: "";
-  background: #6C7A89;
+  background: #6c7a89;
   width: 1.75rem;
   height: 1.75rem;
   position: relative;
   top: -0.5rem;
   border-radius: 1.5rem;
-  -webkit-animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
-  animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  -webkit-animation: cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  animation: cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
 }
 
-.animate-hc:after, .animate-lc:after {
+.animate-hc:after,
+.animate-lc:after {
   display: block;
   content: "";
-  background: #6C7A89;
+  background: #6c7a89;
   width: 2.5rem;
   height: 1.25rem;
   position: relative;
   top: -1.75rem;
-  left: -.75rem;
+  left: -0.75rem;
   border-radius: 1.5rem;
-  -webkit-animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
-  animation:cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  -webkit-animation: cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
+  animation: cloudy 1.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite;
 }
 
 @-webkit-keyframes rainy {
@@ -142,7 +149,7 @@ strong {
 .animate-s,
 .animate-t {
   display: block;
-  background: #67809F;
+  background: #67809f;
   width: 2.5rem;
   height: 1.25rem;
   border-radius: 0.75rem;
@@ -159,7 +166,7 @@ strong {
   position: relative;
   top: -0.5rem;
   border-radius: 1.5rem;
-  background: #67809F;
+  background: #67809f;
 }
 
 .animate-hr:after,
@@ -168,7 +175,7 @@ strong {
 .animate-t:after {
   display: block;
   content: "";
-  border: 4px dotted #67809F;
+  border: 4px dotted #67809f;
   border-radius: 4px;
   border-left: 0;
   border-right: 0;
