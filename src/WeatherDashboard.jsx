@@ -31,12 +31,11 @@ class WeatherDashboard extends Component {
     this.setState({
       weather: {}
     });
+
     fetch(
       `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${location}`
     )
-      .then(response => {
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         if (data.length === 0) {
           throw new Error("Enter a valid major city name");
@@ -46,9 +45,7 @@ class WeatherDashboard extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`
         );
       })
-      .then(response => {
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         this.setState({
           weather: data.consolidated_weather[0],
