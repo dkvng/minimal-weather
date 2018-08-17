@@ -5,15 +5,10 @@ class WeatherDashboard extends Component {
   constructor(props) {
     super(props);
 
-    let currentDate = new Date();
-    let year = currentDate.getFullYear();
-    let month = currentDate.getMonth() + 1;
-    let day = currentDate.getDate();
-
     this.state = {
       weather: {},
       location: "",
-      date: `${year}/${month}/${day}`,
+      locationTitle: "",
       error: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +23,7 @@ class WeatherDashboard extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let { location, date } = this.state;
+    let { location } = this.state;
 
     if (location === "") {
       location = "San Francisco";
@@ -48,7 +43,7 @@ class WeatherDashboard extends Component {
         }
         let woeid = data[0].woeid;
         return fetch(
-          `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/${date}`
+          `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`
         );
       })
       .then(response => {
@@ -56,7 +51,8 @@ class WeatherDashboard extends Component {
       })
       .then(data => {
         this.setState({
-          weather: data[0],
+          weather: data.consolidated_weather[0],
+          locationTitle: data.title,
           error: ""
         });
       })
@@ -74,10 +70,8 @@ class WeatherDashboard extends Component {
   }
 
   render() {
-    let { error, weather, location } = this.state;
-    if (location === "") {
-      location = "San Francisco";
-    }
+    let { error, weather, locationTitle } = this.state;
+
     return (
       <section className="Weather-section">
         <form onSubmit={this.handleSubmit}>
@@ -97,7 +91,7 @@ class WeatherDashboard extends Component {
 
         {Object.values(weather).length > 0 ? (
           <figure>
-            <h3>Currently in {location}</h3>
+            <h3>Currently in {locationTitle}</h3>
             <div className={"animate-" + weather.weather_state_abbr} />
             <h2>
               {this.convertToF(weather.the_temp)}&#176;{" "}
