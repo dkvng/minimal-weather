@@ -21,6 +21,20 @@ class WeatherDashboard extends Component {
       });
   }
 
+  checkCache(location) {
+    let adjLocation = location.toUpperCase();
+
+    if (WeatherDashboard.WOEIDS[adjLocation]) {
+      return new Promise((resolve, reject) => {
+        resolve([{ woeid: WeatherDashboard.WOEIDS[adjLocation] }]);
+      });
+    } else {
+      return fetch(
+        `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${location}`
+      ).then(response => response.json());
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let { location } = this.state;
@@ -32,10 +46,7 @@ class WeatherDashboard extends Component {
       weather: {}
     });
 
-    fetch(
-      `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${location}`
-    )
-      .then(response => response.json())
+    this.checkCache(location)
       .then(data => {
         if (data.length === 0) {
           throw new Error("Enter a valid major city name");
@@ -117,5 +128,11 @@ class WeatherDashboard extends Component {
     );
   }
 }
+
+WeatherDashboard.WOEIDS = {
+  "NEW YORK": 2459115,
+  "SAN FRANCISCO": 2487956,
+  PARIS: 615702
+};
 
 export default WeatherDashboard;
